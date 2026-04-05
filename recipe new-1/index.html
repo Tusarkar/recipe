@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Copper Codex — Recipes worth keeping</title>
+  <meta name="description" content="A small, curated cookbook of tested recipes — static, fast, with photos from hosted links." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">◈</span>
+      <div>
+        <p class="brand-title">Copper Codex</p>
+        <p class="brand-tag">Kitchen notes &amp; tested plates</p>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <a href="#collection">Collection</a>
+      <a href="#tonight">Tonight</a>
+      <a href="#order">Order</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#about">About Us</a>
+      <a href="#privacy">Privacy policy</a>
+    </nav>
+    <button type="button" class="btn-surprise" id="btnSurprise" title="Pick a random recipe">
+      <span class="btn-surprise__glyph">✦</span>
+      Surprise me
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero__visual">
+        <div class="hero__frame">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&amp;q=85&amp;fm=jpg" alt="Table spread with dishes and warm light" width="900" height="600" loading="eager" referrerpolicy="no-referrer" />
+          <div class="hero__badge">Vol. I</div>
+        </div>
+        <div class="hero__orbit" aria-hidden="true"></div>
+      </div>
+      <div class="hero__copy">
+        <p class="eyebrow">Static · No accounts</p>
+        <h1>Recipes carved from <em>real</em> cravings.</h1>
+        <p class="lede">
+          Five dishes, shoppable ingredients, favorites saved in your browser — nothing leaves your device.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#collection">Browse the codex</a>
+          <button type="button" class="btn btn--ghost" id="btnScrollTonight">See tonight’s pick</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="filters" aria-label="Filter recipes">
+      <div class="filters__inner">
+        <p class="filters__label">Show</p>
+        <div class="chips" role="tablist" aria-label="Recipe categories">
+          <button type="button" class="chip chip--active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button type="button" class="chip" data-filter="breakfast" role="tab" aria-selected="false">Breakfast</button>
+          <button type="button" class="chip" data-filter="lunch" role="tab" aria-selected="false">Lunch</button>
+          <button type="button" class="chip" data-filter="dinner" role="tab" aria-selected="false">Dinner</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="collection" id="collection" tabindex="-1">
+      <div class="section-head">
+        <h2>The collection</h2>
+        <p class="section-head__sub">Tap a card to open the full recipe. Star what you’d cook again.</p>
+      </div>
+      <div class="grid" id="recipeGrid"></div>
+    </section>
+
+    <section class="tonight" id="tonight" tabindex="-1">
+      <div class="tonight__panel">
+        <p class="eyebrow">Serendipity mode</p>
+        <h2 id="tonightTitle">Tonight’s pick</h2>
+        <p class="tonight__blurb" id="tonightBlurb">Spin the wheel — we’ll suggest something from the codex.</p>
+        <button type="button" class="btn btn--primary" id="btnSpin">Spin for dinner</button>
+      </div>
+      <div class="tonight__preview" id="tonightPreview" hidden>
+        <img id="tonightImg" alt="" width="400" height="300" />
+        <div>
+          <p class="tonight__name" id="tonightName"></p>
+          <button type="button" class="link-btn" id="btnOpenTonight">Open recipe →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="order" id="order" tabindex="-1">
+      <div class="order__inner">
+        <div class="order__copy">
+          <p class="eyebrow">Takeout</p>
+          <h2>Order from the codex</h2>
+          <p class="order__text">
+            Want these dishes brought to your door? Tap below — we’ll show whether ordering is open.
+          </p>
+        </div>
+        <button type="button" class="btn btn--primary order__cta" id="btnOrderNow">Order now</button>
+      </div>
+    </section>
+
+    <section class="tips" id="tips" tabindex="-1">
+      <div class="tips__inner">
+        <div class="section-head">
+          <h2>Kitchen tips</h2>
+          <p class="section-head__sub">Small habits that make the codex recipes taste even better.</p>
+        </div>
+        <ul class="tips__list">
+          <li><strong>Read once, then cook.</strong> Skim the whole recipe before you heat the pan — timing matters.</li>
+          <li><strong>Salt in layers.</strong> Season as you go; you can always add, rarely subtract.</li>
+          <li><strong>Rest meat &amp; dough.</strong> A few minutes off the heat saves juices and texture.</li>
+          <li><strong>Taste at the end.</strong> Acid, salt, and fat balance each other — adjust before plating.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block-section pantry" id="pantry" tabindex="-1">
+      <div class="section-head">
+        <h2>Pantry staples</h2>
+        <p class="section-head__sub">Keep these around and most codex recipes are one shop away.</p>
+      </div>
+      <div class="pantry__grid">
+        <div class="pantry__card">
+          <h3>Oils &amp; fat</h3>
+          <p>Olive oil, neutral oil, butter, flaky salt.</p>
+        </div>
+        <div class="pantry__card">
+          <h3>Aromatics</h3>
+          <p>Garlic, onion, lemon, black pepper, dried herbs.</p>
+        </div>
+        <div class="pantry__card">
+          <h3>Carbs</h3>
+          <p>Pasta, good bread, flour, sugar, baking powder.</p>
+        </div>
+        <div class="pantry__card">
+          <h3>Dairy &amp; protein</h3>
+          <p>Eggs, yogurt, hard cheese, mince or chops in the freezer.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" tabindex="-1">
+      <div class="contact__inner">
+        <div class="section-head">
+          <h2>Contact us</h2>
+          <p class="section-head__sub">Questions about a recipe, the site, or collaboration — send a note. This form runs in your browser only; nothing is uploaded to a server.</p>
+        </div>
+        <div class="contact__grid">
+          <div class="contact__details">
+            <p class="contact__label">Write</p>
+            <p><a href="mailto:hello@coppercodex.example">hello@coppercodex.example</a></p>
+            <p class="contact__label">Hours</p>
+            <p>We reply within 2–3 business days.</p>
+            <p class="contact__label">Social</p>
+            <p class="contact__social">
+              <a href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">Instagram</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://www.youtube.com/" rel="noopener noreferrer" target="_blank">YouTube</a>
+            </p>
+          </div>
+          <form class="contact__form" id="contactForm" novalidate>
+            <label class="contact__field">
+              <span>Name</span>
+              <input type="text" name="name" id="contactName" autocomplete="name" required placeholder="Your name" />
+            </label>
+            <label class="contact__field">
+              <span>Email</span>
+              <input type="email" name="email" id="contactEmail" autocomplete="email" required placeholder="you@example.com" />
+            </label>
+            <label class="contact__field">
+              <span>Message</span>
+              <textarea name="message" id="contactMessage" rows="4" required placeholder="What’s on your mind?"></textarea>
+            </label>
+            <button type="submit" class="btn btn--primary contact__submit">Send message</button>
+            <p class="contact__feedback" id="contactFeedback" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="privacy" tabindex="-1">
+      <h2>Privacy policy</h2>
+      <p>
+        Copper Codex runs entirely in your browser. Favorites are saved with <strong>local storage</strong> on your device only — we don’t run a backend that receives your recipe picks. The contact form is a demo: nothing is uploaded until you wire it to a mail or form service. Recipe images load from third-party hosts (e.g. <a href="https://unsplash.com" rel="noopener noreferrer" target="_blank">Unsplash</a>); their privacy terms apply when those images load. Questions? <a href="mailto:hello@coppercodex.example">hello@coppercodex.example</a>.
+      </p>
+    </section>
+
+    <section class="about" id="about" tabindex="-1">
+      <h2>Why this exists</h2>
+      <p>
+        This page is plain HTML, CSS, and JavaScript. Recipe photos load from hosted image URLs (see <a href="https://unsplash.com" rel="noopener noreferrer" target="_blank">Unsplash</a>), so you need an internet connection to see them.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#collection">Collection</a>
+      <a href="#tonight">Tonight</a>
+      <a href="#order">Order</a>
+      <a href="#tips">Tips</a>
+      <a href="#pantry">Pantry</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#about">About Us</a>
+      <a href="#privacy">Privacy policy</a>
+    </nav>
+    <p>Copper Codex · Built to be kept · <span id="year"></span></p>
+  </footer>
+
+  <div class="modal" id="recipeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <button type="button" class="modal__close" data-close-modal aria-label="Close recipe">&times;</button>
+      <div class="modal__layout">
+        <div class="modal__media">
+          <img id="modalImg" alt="" width="640" height="480" />
+        </div>
+        <div class="modal__body">
+          <p class="modal__meta" id="modalMeta"></p>
+          <h2 id="modalTitle" tabindex="-1"></h2>
+          <p class="modal__desc" id="modalDesc"></p>
+          <div class="modal__cols">
+            <div>
+              <h3>Ingredients</h3>
+              <ul class="ingredients" id="modalIngredients"></ul>
+            </div>
+            <div>
+              <h3>Steps</h3>
+              <ol class="steps" id="modalSteps"></ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal--order" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle" hidden>
+    <div class="modal__backdrop" data-close-order></div>
+    <div class="modal__panel modal__panel--order">
+      <button type="button" class="modal__close" data-close-order aria-label="Close">&times;</button>
+      <h2 id="orderModalTitle" class="order-modal__title" tabindex="-1">Ordering</h2>
+      <p class="order-modal__msg">Order is not available currently.</p>
+      <button type="button" class="btn btn--primary order-modal__ok" data-close-order>OK</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
